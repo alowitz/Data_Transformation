@@ -76,9 +76,9 @@ if uploaded_file is not None:
 
         # Display the final corrected DataFrame
         st.write('Preview of the transformed data:')
-        st.dataframe(final_df.head())
+        st.dataframe(final_df)
 
-        csv = df.to_csv(index=False)
+        csv = final_df.to_csv(index=False)
         st.download_button(
             label="Download Data",
             data=csv,
