@@ -12,14 +12,11 @@ Today = datetime.date.today()
 Today_str = Today.strftime('%m-%d-%Y').replace('-','_')
 
 # File uploader allows user to add either CSV or Excel file
-uploaded_file = st.file_uploader("Choose a CSV or Excel file (Pro Tip 💡: CSV files load faster)", type=['csv', 'xlsx'])
+uploaded_file = st.file_uploader("Choose a CSV file (Pro Tip 💡: CSV files load faster than xlsx)", type=['csv'])
 
 if uploaded_file is not None:
-    # Check file type and read accordingly
-    if uploaded_file.type == "text/csv":
-        df = pd.read_csv(uploaded_file)
-    else:
-        df = pd.read_excel(uploaded_file)
+    df = pd.read_csv(uploaded_file)
+
     
     # Rename the first column to 'Sample' if it's unnamed
     if 'Unnamed: 0' in df.columns:
