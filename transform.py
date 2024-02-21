@@ -16,6 +16,8 @@ uploaded_file = st.file_uploader("Choose a CSV file (Pro Tip 💡: CSV files loa
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
+    filename = uploaded_file.name
+    filename = filename.replace('.csv','')
 
     
     # Rename the first column to 'Sample' if it's unnamed
@@ -82,7 +84,7 @@ if uploaded_file is not None:
         st.download_button(
             label="Download Data",
             data=csv,
-            file_name=f"Transformed_Data_{Today_str}.csv",
+            file_name=f"{filename}_Transformed_{Today_str}.csv",
             mime="text/csv",
         )
         
